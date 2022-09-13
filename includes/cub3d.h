@@ -9,7 +9,7 @@
 
 typedef struct s_game
 {
-	int		error_exit;
+	int		file_lines_counter;
 	//wall textures
 	char	*no_path;
 	char	*so_path;
@@ -25,8 +25,8 @@ char	*ft_strchr_gnl(char *str, int c);
 char	*ft_init(char *s);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 
-void	exit_with_error(char *error_message);
-void	parse_file(char *file_name, t_game *game);
+void	exit_with_error(char *error_message, t_game *game);
+void	parse_file(char *file, t_game *game);
 
 
 #endif
