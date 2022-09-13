@@ -1,96 +1,95 @@
 #include "cub3d.h"
 
-char	*ft_read_to_n(int fd, char *str)
+char	*read_file(int fd, char *stat_str)
 {
-	char	*buf;
-	int		i;
+	char		*bufer;
+	int			readed_chars;
+	char		*tmp;
 
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buf)
-		return (NULL);
-	i = 1;
-	while (!ft_strchr_gnl(str, '\n') && i != 0)
+	readed_chars = 1;
+	bufer = ft_calloc(BUFFER_SIZE + 1, 1);
+	if (!stat_str)
+		stat_str = ft_calloc(1, 1);
+	while (!ft_strchr(stat_str, '\n') && readed_chars != 0)
 	{
-		i = read(fd, buf, BUFFER_SIZE);
-		if (i == -1)
+		readed_chars = read(fd, bufer, BUFFER_SIZE);
+		if (readed_chars == -1)
 		{
-			free(buf);
+			free(bufer);
+			free(stat_str);
 			return (NULL);
 		}
-		buf[i] = '\0';
-		str = ft_strjoin_gnl(str, buf);
+		bufer[readed_chars] = '\0';
+		tmp = stat_str;
+		stat_str = ft_strjoin(stat_str, bufer);
+		free(tmp);
 	}
-	free(buf);
-	return (str);
+	free(bufer);
+	return (stat_str);
 }
 
-char	*ft_extract_line(char *str)
+char	*get_line(char *stat_str)
 {
+	char	*nstr;
 	int		i;
-	char	*line;
 
 	i = 0;
-	if (!str[i])
+	if (stat_str[i] == '\0')
 		return (NULL);
-	while (str[i] && str[i] != '\n')
+	while (stat_str[i] && stat_str[i] != '\n')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 2));
-	if (!line)
+	nstr = (char *)malloc(sizeof(char) * (i + 2));
+	if (!nstr)
 		return (NULL);
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (stat_str[i] && stat_str[i] != '\n')
 	{
-		line[i] = str[i];
+		nstr[i] = stat_str[i];
 		i++;
 	}
-	if (str[i] == '\n')
-	{
-		line[i] = str[i];
-		i++;
-	}
-	line[i] = '\0';
-	return (line);
+	nstr[i] = '\0';
+	return (nstr);
 }
 
-char	*ft_get_remainder(char *str)
+char	*wow_next_line(char *stat_str)
 {
-	int		i;
-	int		j;
-	char	*line;
+	size_t	i;
+	char	*next_line;
+	size_t	a;
 
-	i = 0;
-	if (!str)
+	if (!stat_str)
 		return (NULL);
-	while (str[i] && str[i] != '\n')
+	i = 0;
+	while (stat_str[i] && stat_str[i] != '\n')
 		i++;
-	if (!str[i])
+	if (stat_str[i] == '\0')
 	{
-		free(str);
+		free(stat_str);
 		return (NULL);
 	}
-	line = (char *)malloc(sizeof(char) * (ft_strlen_gnl(str) - i + 1));
-	if (!line)
+	a = i;
+	next_line = (char *)malloc(sizeof(char) * ((ft_strlen(stat_str)) - i + 1));
+	if (!next_line)
 		return (NULL);
-	i++;
-	j = 0;
-	while (str[i])
-		line[j++] = str[i++];
-	line[j] = '\0';
-	free(str);
-	return (line);
+	i = 0;
+	while (stat_str[a])
+		next_line[i++] = stat_str[++a];
+	next_line[i] = '\0';
+	free(stat_str);
+	return (next_line);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*nextline;
-	static char	*str;
+	static char	*stat_str;
+	char		*nst;
 
-	if (BUFFER_SIZE < 1 || fd < 0)
-		return (0);
-	str = ft_read_to_n(fd, str);
-	if (!str)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	nextline = ft_extract_line(str);
-	str = ft_get_remainder(str);
-	return (nextline);
+	stat_str = read_file(fd, stat_str);
+	if (!stat_str)
+		return (NULL);
+	nst = get_line(stat_str);
+	stat_str = wow_next_line(stat_str);
+	return (nst);
 }

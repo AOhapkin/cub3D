@@ -19,6 +19,19 @@ void	init_game(t_game *game)
 	game->we_path = NULL;
 	game->ea_path = NULL;
 	game->file_lines_counter = 0;
+	game->file_lines = NULL;
+}
+
+void	print_lines(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->file_lines_counter)
+	{
+		printf("%s\n", game->file_lines[i++]);
+	}
+//	printf("%s\n", game->file_lines[0]);
 }
 
 int	main(int argc, char **argv)
@@ -30,5 +43,6 @@ int	main(int argc, char **argv)
 		exit_with_error("program works with one argument only", game);
 	init_game(game);
 	parse_file(argv[1], game);
+	print_lines(game);
 	return (0);
 }

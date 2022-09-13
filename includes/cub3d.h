@@ -10,6 +10,8 @@
 typedef struct s_game
 {
 	int		file_lines_counter;
+	char	**file_lines;
+	char	**trimmed_file_lines;
 	//wall textures
 	char	*no_path;
 	char	*so_path;
