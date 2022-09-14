@@ -98,10 +98,51 @@ void	check_number_of_params(t_game *game)
 	printf("number_of_params: %d\n", number_of_params);
 }
 
+char	*get_texture_path(char *string, t_game *game)
+{
+	char	*path;
+	int		i;
+	int		fd;
+
+	i = 0;
+	while (string[i] != '.')
+	{
+//		if (string[i] != ' ')
+//			exit_with_error("bad path to texture", game);
+		i++;
+	}
+	path = ft_strdup(&string[i]);
+	printf("path: %s\n", path);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		free(path);
+		exit_with_error("bad texture", game);
+		return (NULL);
+	}
+	printf("texture is good\n");
+	close(fd);
+	return (path);
+}
+
+void	save_textures(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->file_lines_counter)
+	{
+		if (game->trimmed_file_lines[i][0] == 'N' && game->trimmed_file_lines[i][1] == 'O' && game->no_path == NULL)
+			game->no_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+		i++;
+	}
+}
+
 void save_map_params(t_game *game)
 {
 	trim_all_spaces(game);
 	check_number_of_params(game);
+	save_textures(game);
 }
 
 void	parse_file(char *file, t_game *game)
