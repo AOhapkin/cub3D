@@ -45,8 +45,7 @@ void	save_file_content(t_game *game, char *file)
 	char	*line;
 
 	game->file_lines = malloc(sizeof(char *) * (game->file_lines_counter + 1));
-	game->trimmed_file_lines = malloc(sizeof(char *) * (game->file_lines_counter + 1));
-	if (!game->file_lines || !game->trimmed_file_lines)
+	if (!game->file_lines)
 		exit_with_error("malloc error", game);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -62,10 +61,54 @@ void	save_file_content(t_game *game, char *file)
 	}
 }
 
+void	trim_all_spaces(t_game *game)
+{
+	int	i;
+
+	game->trimmed_file_lines = malloc(sizeof(char *) * (game->file_lines_counter + 1));
+	if (!game->trimmed_file_lines)
+		exit_with_error("malloc error", game);
+	i = 0;
+	while (i < game->file_lines_counter)
+	{
+		game->trimmed_file_lines[i] = ft_strtrim(game->file_lines[i], " ");
+		i++;
+	}
+}
+
+void	check_number_of_params(t_game *game)
+{
+	int	i;
+	int	number_of_params;
+
+	i = 0;
+	number_of_params = 0;
+	while (i < game->file_lines_counter)
+	{
+		if (game->trimmed_file_lines[i][0] == 'N' || game->trimmed_file_lines[i][0] == 'S'
+		|| game->trimmed_file_lines[i][0] == 'W' || game->trimmed_file_lines[i][0] == 'E'
+		|| game->trimmed_file_lines[i][0] == 'F' || game->trimmed_file_lines[i][0] == 'C')
+			number_of_params++;
+//		printf("char: %c\n", game->trimmed_file_lines[i][0]);
+//		printf("counter: %d\n\n", number_of_params);
+		i++;
+	}
+	if (number_of_params != 6)
+		exit_with_error("Must be 6 (six) map params", game);
+	printf("number_of_params: %d\n", number_of_params);
+}
+
+void save_map_params(t_game *game)
+{
+	trim_all_spaces(game);
+	check_number_of_params(game);
+}
+
 void	parse_file(char *file, t_game *game)
 {
 	validate_file_name_ending(file, game);
 	count_file_lines(game, file);
 	printf("%d\n", game->file_lines_counter);
 	save_file_content(game, file);
+	save_map_params(game);
 }

@@ -5,7 +5,7 @@
 # include <fcntl.h>
 # include "libft.h"
 
-# define BUFFER_SIZE 1
+# define GNL_BUFFER_SIZE 1
 
 typedef struct s_game
 {
@@ -20,13 +20,7 @@ typedef struct s_game
 	//colors
 }			t_game;
 
-// gnl + gnl_utils
 char	*get_next_line(int fd);
-size_t	ft_strlen_gnl(char *str);
-char	*ft_strchr_gnl(char *str, int c);
-char	*ft_init(char *s);
-char	*ft_strjoin_gnl(char *s1, char *s2);
-
 void	exit_with_error(char *error_message, t_game *game);
 void	parse_file(char *file, t_game *game);
 

@@ -7,12 +7,12 @@ char	*read_file(int fd, char *stat_str)
 	char		*tmp;
 
 	readed_chars = 1;
-	bufer = ft_calloc(BUFFER_SIZE + 1, 1);
+	bufer = ft_calloc(GNL_BUFFER_SIZE + 1, 1);
 	if (!stat_str)
 		stat_str = ft_calloc(1, 1);
 	while (!ft_strchr(stat_str, '\n') && readed_chars != 0)
 	{
-		readed_chars = read(fd, bufer, BUFFER_SIZE);
+		readed_chars = read(fd, bufer, GNL_BUFFER_SIZE);
 		if (readed_chars == -1)
 		{
 			free(bufer);
@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	static char	*stat_str;
 	char		*nst;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || GNL_BUFFER_SIZE <= 0)
 		return (NULL);
 	stat_str = read_file(fd, stat_str);
 	if (!stat_str)

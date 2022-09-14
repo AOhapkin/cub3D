@@ -7,7 +7,7 @@ void	exit_with_error(char *error_message, t_game *game)
 //	free_game(game);
 	(void) game;
 	ft_putstr_fd("\nExit\n", 2);
-	exit(EXIT_FAILURE);
+	exit(1);
 }
 
 void	init_game(t_game *game)
@@ -29,7 +29,7 @@ void	print_lines(t_game *game)
 	i = 0;
 	while (i < game->file_lines_counter)
 	{
-		printf("%s\n", game->file_lines[i++]);
+		printf("%s\n", game->trimmed_file_lines[i++]);
 	}
 //	printf("%s\n", game->file_lines[0]);
 }
@@ -43,6 +43,6 @@ int	main(int argc, char **argv)
 		exit_with_error("program works with one argument only", game);
 	init_game(game);
 	parse_file(argv[1], game);
-	print_lines(game);
+//	print_lines(game);
 	return (0);
 }
