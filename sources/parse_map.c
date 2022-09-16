@@ -134,6 +134,12 @@ void	save_textures(t_game *game)
 	{
 		if (game->trimmed_file_lines[i][0] == 'N' && game->trimmed_file_lines[i][1] == 'O' && game->no_path == NULL)
 			game->no_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+		else if (game->trimmed_file_lines[i][0] == 'S' && game->trimmed_file_lines[i][1] == 'O' && game->so_path == NULL)
+			game->so_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+		else if (game->trimmed_file_lines[i][0] == 'W' && game->trimmed_file_lines[i][1] == 'E' && game->we_path == NULL)
+			game->we_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+		else if (game->trimmed_file_lines[i][0] == 'E' && game->trimmed_file_lines[i][1] == 'A' && game->ea_path == NULL)
+			game->ea_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
 		i++;
 	}
 }
@@ -143,6 +149,7 @@ void save_map_params(t_game *game)
 	trim_all_spaces(game);
 	check_number_of_params(game);
 	save_textures(game);
+	save_colors(game);
 }
 
 void	parse_file(char *file, t_game *game)
