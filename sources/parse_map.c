@@ -9,11 +9,8 @@ void	validate_file_name_ending(char *file_name, t_game *game)
 		i++;
 	while (file_name[i] != '.' && i != 0)
 		i--;
-	printf("%s\n", &file_name[i]);
 	if (!file_name[i] || ft_strncmp(&file_name[i], ".cub\0", 5))
 		exit_with_error("wrong file type", game);
-//	else
-//		printf("file type is ok\n");
 }
 
 void	count_file_lines(t_game *game, char *file)
@@ -55,7 +52,6 @@ void	save_file_content(t_game *game, char *file)
 	{
 		line = get_next_line(fd);
 		game->file_lines[i] = ft_strdup(line);
-//		printf("%s\n", game->file_lines[i]);
 		i++;
 		free(line);
 	}
@@ -89,13 +85,10 @@ void	check_number_of_params(t_game *game)
 		|| game->trimmed_file_lines[i][0] == 'W' || game->trimmed_file_lines[i][0] == 'E'
 		|| game->trimmed_file_lines[i][0] == 'F' || game->trimmed_file_lines[i][0] == 'C')
 			number_of_params++;
-//		printf("char: %c\n", game->trimmed_file_lines[i][0]);
-//		printf("counter: %d\n\n", number_of_params);
 		i++;
 	}
 	if (number_of_params != 6)
 		exit_with_error("Must be 6 (six) map params", game);
-	printf("number_of_params: %d\n", number_of_params);
 }
 
 char	*get_texture_path(char *string, t_game *game)
@@ -107,12 +100,9 @@ char	*get_texture_path(char *string, t_game *game)
 	i = 0;
 	while (string[i] != '.')
 	{
-//		if (string[i] != ' ')
-//			exit_with_error("bad path to texture", game);
 		i++;
 	}
 	path = ft_strdup(&string[i]);
-	printf("path: %s\n", path);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
@@ -120,7 +110,6 @@ char	*get_texture_path(char *string, t_game *game)
 		exit_with_error("bad texture", game);
 		return (NULL);
 	}
-	printf("texture is good\n");
 	close(fd);
 	return (path);
 }
@@ -156,7 +145,6 @@ void	parse_file(char *file, t_game *game)
 {
 	validate_file_name_ending(file, game);
 	count_file_lines(game, file);
-	printf("%d\n", game->file_lines_counter);
 	save_file_content(game, file);
 	save_map_params(game);
 }

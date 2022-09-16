@@ -33,7 +33,6 @@ void	check_rgb_chars(char *string, t_game *game)
 	int	i;
 	char c;
 
-	printf("rgb string: %s\n", string);
 	i = 0;
 	c = string[i];
 	while (c != '\n' && c != '\0')
@@ -45,7 +44,6 @@ void	check_rgb_chars(char *string, t_game *game)
 		i++;
 		c = string[i];
 	}
-	printf("rgb chars are ok\n");
 }
 
 int	get_color(char *string, t_game *game)
@@ -58,14 +56,11 @@ int	get_color(char *string, t_game *game)
 		string++;
 	check_rgb_chars(string, game);
 	r = rgb_atoi(string, game);
-	printf("r: %d\n", r);
 	string = ft_strchr(string, ',');
 	g = rgb_atoi(string, game);
 	string++;
-	printf("g: %d\n", g);
 	string = ft_strchr(string, ',');
 	b = rgb_atoi(string, game);
-	printf("b: %d\n", b);
 	return (r << 16 | g << 8 | b);
 }
 
@@ -80,8 +75,11 @@ void	save_colors(t_game *game)
 		{
 			game->ceiling_color = get_color(game->trimmed_file_lines[i], game);
 			printf("ceiling_color: %d\n", game->ceiling_color);
-			// сверить значения в других примерах
-			//todo цвет пола
+		}
+		if (game->trimmed_file_lines[i][0] == 'F')
+		{
+			game->floor_color = get_color(game->trimmed_file_lines[i], game);
+			printf("floor_color: %d\n", game->floor_color);
 		}
 		i++;
 	}
