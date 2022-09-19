@@ -1,5 +1,19 @@
 #include "cub3d.h"
 
+int	is_xpm_format(char *texture_path)
+{
+	size_t	i;
+
+	i = 0;
+	while (texture_path[i])
+		i++;
+	while (texture_path[i] != '.' && i != 0)
+		i--;
+	if (!texture_path[i] || ft_strncmp(&texture_path[i], ".xpm\0", 5))
+		return (0);
+	return (1);
+}
+
 char	*get_texture_path(char *string, t_game *game)
 {
 	char	*path;
@@ -13,7 +27,7 @@ char	*get_texture_path(char *string, t_game *game)
 	}
 	path = ft_strdup(&string[i]);
 	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	if (fd < 0 || !is_xpm_format(path))
 	{
 		free(path);
 		exit_with_error("bad texture", game);
