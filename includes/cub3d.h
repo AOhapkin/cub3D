@@ -10,7 +10,7 @@
 # define EMPTY ' '
 # define WALL '1'
 # define FLOOR '0'
-# define PLAYER "NSWE"
+# define VALID_PLAYER_CHARS "NSWE"
 
 typedef struct s_game
 {

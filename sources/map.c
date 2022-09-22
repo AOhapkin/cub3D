@@ -42,9 +42,34 @@ void check_map_chars(t_game *game)
 //	printf("map chars is ok\n");
 }
 
+void check_number_of_players(t_game *game)
+{
+	int	i;
+	int	j;
+	int	number_of_players;
+
+	i = 0;
+	number_of_players = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (ft_strchr(VALID_PLAYER_CHARS, game->map[i][j]))
+				number_of_players++;
+			j++;
+		}
+		i++;
+	}
+	if (number_of_players != 1)
+		exit_with_error("invalid number of players", game);
+	printf("number of players is ok\n");
+}
+
 void	validate_map(t_game *game)
 {
 	check_map_chars(game);
+	check_number_of_players(game);
 }
 
 
