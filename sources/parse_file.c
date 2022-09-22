@@ -50,4 +50,5 @@ void	parse_file(char *file, t_game *game)
 	save_file_content(game, file);
 	save_map_params(game);
 	save_map(game);
+	validate_map(game);
 }

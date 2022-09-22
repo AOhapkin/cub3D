@@ -39,5 +39,6 @@ void	count_file_lines(t_game *game, char *file);
 void	save_colors(t_game *game);
 void	save_textures(t_game *game);
 void	save_map(t_game *game);
+void	validate_map(t_game *game);
 
 #endif

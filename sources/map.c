@@ -21,3 +21,30 @@ void	save_map(t_game *game)
 		j++;
 	}
 }
+
+void check_map_chars(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (!ft_strchr(VALID_MAP_CHARS, game->map[i][j]))
+				exit_with_error("invalid map symbol", game);
+			j++;
+		}
+		i++;
+	}
+//	printf("map chars is ok\n");
+}
+
+void	validate_map(t_game *game)
+{
+	check_map_chars(game);
+}
+
+
