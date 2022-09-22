@@ -44,5 +44,7 @@ int	main(int argc, char **argv)
 	init_game(game);
 	parse_file(argv[1], game);
 //	print_lines(game);
+//	printf("file lines number: %d\n", game->file_lines_counter);
+//	printf("map height: %d\n", game->map_height);
 	return (0);
 }

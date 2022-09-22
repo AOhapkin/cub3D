@@ -6,6 +6,11 @@
 # include "libft.h"
 
 # define GNL_BUFFER_SIZE 1
+# define VALID_MAP_CHARS " 10NSWE"
+# define EMPTY ' '
+# define WALL '1'
+# define FLOOR '0'
+# define PLAYER "NSWE"
 
 typedef struct s_game
 {
@@ -20,6 +25,9 @@ typedef struct s_game
 	//colors
 	int		floor_color;
 	int		ceiling_color;
+	//map
+	int		map_height;
+	char	**map;
 }			t_game;
 
 char	*get_next_line(int fd);
@@ -30,6 +38,6 @@ void	check_number_of_params(t_game *game);
 void	count_file_lines(t_game *game, char *file);
 void	save_colors(t_game *game);
 void	save_textures(t_game *game);
-
+void	save_map(t_game *game);
 
 #endif
