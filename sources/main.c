@@ -20,6 +20,8 @@ void	init_game(t_game *game)
 	game->ea_path = NULL;
 	game->file_lines_counter = 0;
 	game->file_lines = NULL;
+	game->map_height = 0;
+	game->map_width = 0;
 }
 
 void	print_lines(t_game *game)

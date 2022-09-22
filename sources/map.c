@@ -20,9 +20,10 @@ void	save_map(t_game *game)
 		i++;
 		j++;
 	}
+	set_map_with(game);
 }
 
-void check_map_chars(t_game *game)
+void	check_map_chars(t_game *game)
 {
 	int	i;
 	int	j;
@@ -39,10 +40,9 @@ void check_map_chars(t_game *game)
 		}
 		i++;
 	}
-//	printf("map chars is ok\n");
 }
 
-void check_number_of_players(t_game *game)
+void	check_number_of_players(t_game *game)
 {
 	int	i;
 	int	j;
@@ -68,8 +68,7 @@ void check_number_of_players(t_game *game)
 
 void	validate_map(t_game *game)
 {
+	check_map_size(game);
 	check_map_chars(game);
 	check_number_of_players(game);
 }
-
-

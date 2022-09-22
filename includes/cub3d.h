@@ -26,7 +26,8 @@ typedef struct s_game
 	int		floor_color;
 	int		ceiling_color;
 	//map
-	int		map_height;
+	size_t	map_height;
+	size_t	map_width;
 	char	**map;
 }			t_game;
 
@@ -40,5 +41,7 @@ void	save_colors(t_game *game);
 void	save_textures(t_game *game);
 void	save_map(t_game *game);
 void	validate_map(t_game *game);
+void	set_map_with(t_game *game);
+void	check_map_size(t_game *game);
 
 #endif
