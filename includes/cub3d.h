@@ -7,6 +7,7 @@
 
 # define GNL_BUFFER_SIZE 1
 # define VALID_MAP_CHARS " 10NSWE"
+# define VALID_EDGE_WALL_CHARS " 1"
 # define EMPTY ' '
 # define WALL '1'
 # define FLOOR '0'
@@ -43,5 +44,6 @@ void	save_map(t_game *game);
 void	validate_map(t_game *game);
 void	set_map_with(t_game *game);
 void	check_map_size(t_game *game);
+void	validate_walls(t_game *game);
 
 #endif

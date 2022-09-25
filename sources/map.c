@@ -71,4 +71,6 @@ void	validate_map(t_game *game)
 	check_map_size(game);
 	check_map_chars(game);
 	check_number_of_players(game);
+	validate_walls(game);
+//	validate_player_position();
 }
