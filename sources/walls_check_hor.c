@@ -14,7 +14,7 @@ void	check_edge_line(char *map_line, t_game *game)
 	}
 }
 
-void	check_line(char *map_line, t_game *game)
+void	check_line(const char *map_line, t_game *game)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ void	check_line(char *map_line, t_game *game)
 	while (map_line[i] == EMPTY)
 		i++;
 	if (map_line[i++] != WALL)
-		exit_with_error("the map must be surrounded by walls", game);
+		exit_with_error("fail wall check", game);
 	while (map_line[i])
 	{
 		if (map_line[i] == FLOOR && map_line[i + 1] == EMPTY)
@@ -35,10 +35,10 @@ void	check_line(char *map_line, t_game *game)
 	while (map_line[i] == EMPTY)
 		i--;
 	if (map_line[i] != WALL)
-		exit_with_error("the map must be surrounded by walls", game);
+		exit_with_error("fail wall check", game);
 }
 
-void	validate_walls(t_game *game)
+void	validate_walls_by_lines(t_game *game)
 {
 	int	i;
 

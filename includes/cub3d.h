@@ -8,6 +8,7 @@
 # define GNL_BUFFER_SIZE 1
 # define VALID_MAP_CHARS " 10NSWE"
 # define VALID_EDGE_WALL_CHARS " 1"
+# define INNER_MAP_CHARS "0NSEW"
 # define EMPTY ' '
 # define WALL '1'
 # define FLOOR '0'
@@ -30,6 +31,10 @@ typedef struct s_game
 	size_t	map_height;
 	size_t	map_width;
 	char	**map;
+	//player
+	float		hero_x;
+	float		hero_y;
+
 }			t_game;
 
 char	*get_next_line(int fd);
@@ -44,6 +49,7 @@ void	save_map(t_game *game);
 void	validate_map(t_game *game);
 void	set_map_with(t_game *game);
 void	check_map_size(t_game *game);
-void	validate_walls(t_game *game);
+void	validate_walls_by_lines(t_game *game);
+void	validate_inner_map_chars(t_game *game);
 
 #endif
