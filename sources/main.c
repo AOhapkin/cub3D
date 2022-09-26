@@ -20,6 +20,8 @@ void	init_game(t_game *game)
 	game->ea_path = NULL;
 	game->file_lines_counter = 0;
 	game->file_lines = NULL;
+	game->map_height = 0;
+	game->map_width = 0;
 }
 
 void	print_lines(t_game *game)
@@ -44,5 +46,7 @@ int	main(int argc, char **argv)
 	init_game(game);
 	parse_file(argv[1], game);
 //	print_lines(game);
+//	printf("file lines number: %d\n", game->file_lines_counter);
+//	printf("map height: %d\n", game->map_height);
 	return (0);
 }
