@@ -5,7 +5,6 @@ void	check_edge_line(char *map_line, t_game *game)
 	int	i;
 
 	i = 0;
-	printf("%s\n", map_line);
 	while (map_line[i])
 	{
 		if (!ft_strchr(VALID_EDGE_WALL_CHARS, map_line[i]))

@@ -35,6 +35,32 @@ void	save_file_content(t_game *game, char *file)
 	}
 }
 
+void	get_player_start_position(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (ft_strchr(VALID_PLAYER_CHARS, game->map[i][j]))
+			{
+				game->hero_x = (float)j + 0.5f;
+				game->hero_y = (float)i + 0.5f;
+				game->view = get_player_view(game->map[i][j]);
+			}
+			j++;
+		}
+		i++;
+	}
+	printf("hero_x: %f\n"
+		   "hero_y: %f\n"
+		   "view: %f\n", game->hero_x, game->hero_y, game->view);
+}
+
 void save_map_params(t_game *game)
 {
 	trim_all_spaces(game);
@@ -50,5 +76,6 @@ void	parse_file(char *file, t_game *game)
 	save_file_content(game, file);
 	save_map_params(game);
 	save_map(game);
+	get_player_start_position(game);
 	validate_map(game);
 }

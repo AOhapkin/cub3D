@@ -10,7 +10,7 @@ void	exit_with_error(char *error_message, t_game *game)
 	exit(1);
 }
 
-void	init_game(t_game *game)
+void	reset_game(t_game *game)
 {
 	if (!game)
 		exit_with_error("malloc error", game);
@@ -43,8 +43,9 @@ int	main(int argc, char **argv)
 	game = malloc(sizeof(t_game));
 	if (argc != 2)
 		exit_with_error("program works with one argument only", game);
-	init_game(game);
+	reset_game(game);
 	parse_file(argv[1], game);
+//	init_new_game(game);
 //	print_lines(game);
 //	printf("file lines number: %d\n", game->file_lines_counter);
 //	printf("map height: %d\n", game->map_height);

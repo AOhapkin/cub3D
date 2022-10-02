@@ -1,9 +1,12 @@
 #ifndef CUB3D_H
 # define CUB3D_H
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 # include "libft.h"
+# include "mlx.h"
 
 # define GNL_BUFFER_SIZE 1
 # define VALID_MAP_CHARS " 10NSWE"
@@ -13,6 +16,13 @@
 # define WALL '1'
 # define FLOOR '0'
 # define VALID_PLAYER_CHARS "NSWE"
+# define NORTH 'N'
+# define SOUTH 'S'
+# define WEST 'W'
+# define EAST 'E'
+
+# define WIN_NEIGHT		640
+# define WIN_WIDTH		480
 
 typedef struct s_game
 {
@@ -34,7 +44,10 @@ typedef struct s_game
 	//player
 	float		hero_x;
 	float		hero_y;
-
+	float		view;
+	//mlx
+	void	*mlx;
+	void	*window;
 }			t_game;
 
 char	*get_next_line(int fd);
@@ -51,5 +64,7 @@ void	set_map_with(t_game *game);
 void	check_map_size(t_game *game);
 void	validate_walls_by_lines(t_game *game);
 void	validate_inner_map_chars(t_game *game);
+void	init_new_game(t_game *game);
+float	get_player_view(char player_start_char);
 
 #endif
