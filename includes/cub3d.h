@@ -30,10 +30,11 @@ typedef struct s_game
 	char	**file_lines;
 	char	**trimmed_file_lines;
 	//wall textures
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
+//	char	*no_path;
+//	char	*so_path;
+//	char	*we_path;
+//	char	*ea_path;
+	char	*walls_nswe[4];
 	//colors
 	int		floor_color;
 	int		ceiling_color;

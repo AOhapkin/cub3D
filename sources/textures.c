@@ -44,15 +44,13 @@ void	save_textures(t_game *game)
 	i = 0;
 	while (i < game->file_lines_counter)
 	{
-		if (game->trimmed_file_lines[i][0] == 'N' && game->trimmed_file_lines[i][1] == 'O' && game->no_path == NULL)
-			game->no_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
-		else if (game->trimmed_file_lines[i][0] == 'S' && game->trimmed_file_lines[i][1] == 'O' && game->so_path == NULL)
-			game->so_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
-		else if (game->trimmed_file_lines[i][0] == 'W' && game->trimmed_file_lines[i][1] == 'E' && game->we_path == NULL)
-			game->we_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
-		else if (game->trimmed_file_lines[i][0] == 'E' && game->trimmed_file_lines[i][1] == 'A' && game->ea_path == NULL)
-			game->ea_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+		if ((game->trimmed_file_lines[i][0] == 'N' && game->trimmed_file_lines[i][1] == 'O' && game->walls_nswe[i] == NULL)
+			|| (game->trimmed_file_lines[i][0] == 'S' && game->trimmed_file_lines[i][1] == 'O' && game->walls_nswe[i] == NULL)
+			|| (game->trimmed_file_lines[i][0] == 'W' && game->trimmed_file_lines[i][1] == 'E' && game->walls_nswe[i] == NULL)
+			|| (game->trimmed_file_lines[i][0] == 'E' && game->trimmed_file_lines[i][1] == 'A' && game->walls_nswe[i] == NULL))
+		{
+			game->walls_nswe[i] = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+		}
 		i++;
 	}
-	printf("%s\n", game->no_path);
 }

@@ -12,12 +12,16 @@ void	exit_with_error(char *error_message, t_game *game)
 
 void	reset_game(t_game *game)
 {
+	int	i;
 	if (!game)
 		exit_with_error("malloc error", game);
-	game->no_path = NULL;
-	game->so_path = NULL;
-	game->we_path = NULL;
-	game->ea_path = NULL;
+//	game->no_path = NULL;
+//	game->so_path = NULL;
+//	game->we_path = NULL;
+//	game->ea_path = NULL;
+	i = 0;
+	while (i < 4)
+		game->walls_nswe[i++] = NULL;
 	game->file_lines_counter = 0;
 	game->file_lines = NULL;
 	game->map_height = 0;
