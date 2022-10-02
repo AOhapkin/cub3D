@@ -54,4 +54,5 @@ void	save_textures(t_game *game)
 			game->ea_path = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
 		i++;
 	}
+	printf("%s\n", game->no_path);
 }

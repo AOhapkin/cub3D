@@ -42,9 +42,9 @@ void	validate_walls_by_lines(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i <= game->map_height)
+	while (i <= (int)game->map_height)
 	{
-		if (i == 0 || i == (game->map_height))
+		if (i == 0 || i == (int)(game->map_height))
 			check_edge_line(game->map[i], game);
 		else
 			check_line(game->map[i], game);
