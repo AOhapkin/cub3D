@@ -45,7 +45,8 @@ int	main(int argc, char **argv)
 		exit_with_error("program works with one argument only", game);
 	reset_game(game);
 	parse_file(argv[1], game);
-//	init_new_game(game);
+	init_new_game(game);
+
 //	print_lines(game);
 //	printf("file lines number: %d\n", game->file_lines_counter);
 //	printf("map height: %d\n", game->map_height);

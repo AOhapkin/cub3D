@@ -40,8 +40,10 @@ char	*get_texture_path(char *string, t_game *game)
 void	save_textures(t_game *game)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (i < game->file_lines_counter)
 	{
 		if ((game->trimmed_file_lines[i][0] == 'N' && game->trimmed_file_lines[i][1] == 'O' && game->xpm_nswe[i] == NULL)
@@ -49,7 +51,7 @@ void	save_textures(t_game *game)
 			|| (game->trimmed_file_lines[i][0] == 'W' && game->trimmed_file_lines[i][1] == 'E' && game->xpm_nswe[i] == NULL)
 			|| (game->trimmed_file_lines[i][0] == 'E' && game->trimmed_file_lines[i][1] == 'A' && game->xpm_nswe[i] == NULL))
 		{
-			game->xpm_nswe[i] = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+			game->xpm_nswe[j++] = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
 		}
 		i++;
 	}

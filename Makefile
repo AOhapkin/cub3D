@@ -50,7 +50,7 @@ clean:
 	make -C $(MLX_DIR) clean
 
 fclean:	clean
-	rm -r $(NAME)
+	rm -rf $(NAME)
 	make -C $(LIBFT_DIR) fclean
 
 re:	fclean all
