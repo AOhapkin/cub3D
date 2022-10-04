@@ -21,8 +21,8 @@
 # define WEST 'W'
 # define EAST 'E'
 
-# define WIN_NEIGHT		640
-# define WIN_WIDTH		480
+# define WIN_WIDTH		640
+# define WIN_NEIGHT		480
 
 enum {
 	ON_KEYDOWN = 2,
