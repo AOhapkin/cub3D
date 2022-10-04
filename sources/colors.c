@@ -74,12 +74,10 @@ void	save_colors(t_game *game)
 		if (game->trimmed_file_lines[i][0] == 'C')
 		{
 			game->ceiling_color = get_color(game->trimmed_file_lines[i], game);
-			printf("ceiling_color: %d\n", game->ceiling_color);
 		}
 		if (game->trimmed_file_lines[i][0] == 'F')
 		{
 			game->floor_color = get_color(game->trimmed_file_lines[i], game);
-			printf("floor_color: %d\n", game->floor_color);
 		}
 		i++;
 	}

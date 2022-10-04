@@ -16,7 +16,6 @@ void	save_map(t_game *game)
 	while (i < game->file_lines_counter)
 	{
 		game->map[j] = game->file_lines[i];
-		printf("map[%d]_%s\n", j, game->map[j]);
 		i++;
 		j++;
 	}
@@ -63,7 +62,6 @@ void	check_number_of_players(t_game *game)
 	}
 	if (number_of_players != 1)
 		exit_with_error("invalid number of players", game);
-	printf("number of players is ok\n");
 }
 
 void	validate_map(t_game *game)
