@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlenna <jlenna@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/06 17:11:08 by jlenna            #+#    #+#             */
+/*   Updated: 2022/10/06 17:11:36 by jlenna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	validate_file_name_ending(char *file_name, t_game *game)
@@ -56,12 +68,12 @@ void	get_player_start_position(t_game *game)
 		}
 		i++;
 	}
-	printf("hero_x: %f\n"
-		   "hero_y: %f\n"
-		   "view: %f\n", game->hero_x, game->hero_y, game->view);
+	printf("hero_x: %f\n" \
+			"hero_y: %f\n" \
+			"view: %f\n", game->hero_x, game->hero_y, game->view);
 }
 
-void save_map_params(t_game *game)
+void	save_map_params(t_game *game)
 {
 	trim_all_spaces(game);
 	check_number_of_params(game);

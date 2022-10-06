@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlenna <jlenna@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/06 17:12:28 by jlenna            #+#    #+#             */
+/*   Updated: 2022/10/06 17:12:29 by jlenna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	is_xpm_format(char *texture_path)
@@ -46,12 +58,21 @@ void	save_textures(t_game *game)
 	j = 0;
 	while (i < game->file_lines_counter)
 	{
-		if ((game->trimmed_file_lines[i][0] == 'N' && game->trimmed_file_lines[i][1] == 'O' && game->xpm_nswe[i] == NULL)
-			|| (game->trimmed_file_lines[i][0] == 'S' && game->trimmed_file_lines[i][1] == 'O' && game->xpm_nswe[i] == NULL)
-			|| (game->trimmed_file_lines[i][0] == 'W' && game->trimmed_file_lines[i][1] == 'E' && game->xpm_nswe[i] == NULL)
-			|| (game->trimmed_file_lines[i][0] == 'E' && game->trimmed_file_lines[i][1] == 'A' && game->xpm_nswe[i] == NULL))
+		if ((game->trimmed_file_lines[i][0] == 'N' \
+			&& game->trimmed_file_lines[i][1] == 'O' \
+			&& game->xpm_nswe[i] == NULL) \
+			|| (game->trimmed_file_lines[i][0] == 'S' \
+			&& game->trimmed_file_lines[i][1] == 'O' \
+			&& game->xpm_nswe[i] == NULL)
+			|| (game->trimmed_file_lines[i][0] == 'W' \
+			&& game->trimmed_file_lines[i][1] == 'E' \
+			&& game->xpm_nswe[i] == NULL)
+			|| (game->trimmed_file_lines[i][0] == 'E' \
+			&& game->trimmed_file_lines[i][1] == 'A' \
+			&& game->xpm_nswe[i] == NULL))
 		{
-			game->xpm_nswe[j++] = ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
+			game->xpm_nswe[j++] = \
+			ft_strdup(get_texture_path(game->trimmed_file_lines[i], game));
 		}
 		i++;
 	}

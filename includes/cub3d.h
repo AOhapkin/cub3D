@@ -116,4 +116,6 @@ void	validate_inner_map_chars(t_game *game);
 void	init_new_game(t_game *game);
 float	get_player_view(char player_start_char);
 
+int		exit_hook(t_game *game);
+
 #endif
