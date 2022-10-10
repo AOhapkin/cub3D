@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlenna <jlenna@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/06 17:11:44 by jlenna            #+#    #+#             */
+/*   Updated: 2022/10/06 17:12:13 by jlenna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	trim_all_spaces(t_game *game)
 {
 	int	i;
 
-	game->trimmed_file_lines = malloc(sizeof(char *) * (game->file_lines_counter + 1));
+	game->trimmed_file_lines = malloc(sizeof(char *) \
+								* (game->file_lines_counter + 1));
 	if (!game->trimmed_file_lines)
 		exit_with_error("malloc error", game);
 	i = 0;
@@ -24,9 +37,12 @@ void	check_number_of_params(t_game *game)
 	number_of_params = 0;
 	while (i < game->file_lines_counter)
 	{
-		if (game->trimmed_file_lines[i][0] == 'N' || game->trimmed_file_lines[i][0] == 'S'
-			|| game->trimmed_file_lines[i][0] == 'W' || game->trimmed_file_lines[i][0] == 'E'
-			|| game->trimmed_file_lines[i][0] == 'F' || game->trimmed_file_lines[i][0] == 'C')
+		if (game->trimmed_file_lines[i][0] == 'N' \
+			|| game->trimmed_file_lines[i][0] == 'S'
+			|| game->trimmed_file_lines[i][0] == 'W' \
+			|| game->trimmed_file_lines[i][0] == 'E' \
+			|| game->trimmed_file_lines[i][0] == 'F' \
+			|| game->trimmed_file_lines[i][0] == 'C')
 			number_of_params++;
 		i++;
 	}
