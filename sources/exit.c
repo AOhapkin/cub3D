@@ -14,9 +14,9 @@
 
 int	exit_hook(t_game *game)
 {
-	int	i;
-
-	i = -1;
+//	int	i;
+//
+//	i = -1;
 //	destroy_img(game);
 	mlx_destroy_window(game->mlx, game->window);
 //	free
