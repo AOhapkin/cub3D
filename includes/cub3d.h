@@ -23,6 +23,10 @@
 
 # define WIN_WIDTH		640
 # define WIN_NEIGHT		480
+# define ANGLE_STEP		0.02f
+# define LINEAR_STEP	0.3f
+# define FOV			1.047f // угол обхора 60 градусов
+# define MAP_SCALE		4
 
 enum {
 	ON_KEYDOWN = 2,
@@ -74,6 +78,22 @@ typedef struct s_image
 	int		height;
 }	t_image;
 
+typedef struct s_ray
+{
+	float	dx;
+	float	dy;
+	int		sx; //направление луча
+	int		sy;
+	float	hor_x;
+	float	hor_y;
+	float	vert_x;
+	float	vert_y;
+	float	vert_dist;
+	float	hor_dist;
+	float	vert_w;
+	float	hor_w;
+}	t_ray;
+
 typedef struct s_game
 {
 	int		file_lines_counter;
@@ -92,11 +112,13 @@ typedef struct s_game
 	float		hero_x;
 	float		hero_y;
 	float		view;
+	float		txt_w;
+	int			txt_idx;
 	//mlx
 	void	*mlx;
 	void	*window;
-	t_image	wall[4];
-	t_image	background;
+	t_image	txt[4];
+	t_image	img;
 }			t_game;
 
 char	*get_next_line(int fd);
@@ -117,5 +139,8 @@ void	init_new_game(t_game *game);
 float	get_player_view(char player_start_char);
 
 int		exit_hook(t_game *game);
+void	raycast(t_game *game);
+int		round_float(float f);
+void	draw_vertical_line(t_game *game, int w, float dist);
 
 #endif
