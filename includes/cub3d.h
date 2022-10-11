@@ -28,6 +28,18 @@
 # define FOV			1.047f // угол обхора 60 градусов
 # define MAP_SCALE		4
 
+//keys
+
+# define KEY_ESC		53
+# define KEY_W			13
+# define KEY_A			0
+# define KEY_S			1
+# define KEY_D			2
+# define KEY_AR_UP		126
+# define KEY_AR_LEFT	123
+# define KEY_AR_DOWN	125
+# define KEY_AR_RIGHT	124
+
 enum {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
@@ -142,5 +154,7 @@ int		exit_hook(t_game *game);
 void	raycast(t_game *game);
 int		round_float(float f);
 void	draw_vertical_line(t_game *game, int w, float dist);
+void	recalculate_position(t_game *game, int move_direction);
+float	get_ray(t_game *game, float view_current);
 
 #endif

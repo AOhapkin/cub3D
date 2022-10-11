@@ -64,8 +64,23 @@ void	draw_image(t_game *game)
 int	on_key_down(int keycode, t_game *game)
 {
 	draw_image(game);
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 		exit_hook(game);
+	else if (keycode == KEY_W || keycode == KEY_AR_UP)
+		recalculate_position(game, 0);
+	else if (keycode == KEY_S || keycode == KEY_AR_DOWN)
+		recalculate_position(game, 2);
+	else if (keycode == KEY_A)
+		recalculate_position(game, 3);
+	else if (keycode == KEY_D)
+		recalculate_position(game, 1);
+	else if (keycode == KEY_AR_LEFT)
+		game->view -= ANGLE_STEP * M_PI;
+	else if (keycode == KEY_AR_RIGHT)
+		game->view += ANGLE_STEP * M_PI;
+	else
+		return (0);
+	raycast(game);
 	return (0);
 }
 
