@@ -1,9 +1,9 @@
-NO ./textures/no.xpm
-SO ./textures/so.xpm
+NO ./textures/grass.xpm
+SO ./textures/stone.xpm
 
 
-                           WE                           ./textures/we.xpm
-EA ./textures/ea.xpm
+                           WE                           ./textures/tilledsoil.xpm
+EA ./textures/water.xpm
 
 F 220,100,0
 C 225,30,0

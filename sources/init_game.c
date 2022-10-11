@@ -19,12 +19,12 @@ void	init_textures(t_game *game)
 	i = 0;
 	while (i < 4)
 	{
-		game->wall[i].img_ptr = mlx_xpm_file_to_image(game->mlx, \
-			game->xpm_nswe[i], &game->wall[i].width, \
-			&game->wall[i].height);
-		game->wall[i].addr = mlx_get_data_addr(game->wall[i].img_ptr, \
-			&game->wall[i].bpp, \
-			&game->wall[i].line_length, &game->wall[i].endian);
+		game->txt[i].img_ptr = mlx_xpm_file_to_image(game->mlx, \
+			game->xpm_nswe[i], &game->txt[i].width, \
+			&game->txt[i].height);
+		game->txt[i].addr = mlx_get_data_addr(game->txt[i].img_ptr, \
+			&game->txt[i].bpp, \
+			&game->txt[i].line_length, &game->txt[i].endian);
 		i++;
 	}
 }
@@ -34,7 +34,7 @@ void	draw_background(t_game *game)
 	int	i;
 	int	*canvas;
 
-	canvas = (int *)(game->background.addr);
+	canvas = (int *)(game->img.addr);
 	i = WIN_WIDTH * WIN_NEIGHT / 2;
 	while (i > 0)
 	{
@@ -50,14 +50,14 @@ void	draw_background(t_game *game)
 
 void	draw_image(t_game *game)
 {
-	game->background.img_ptr = mlx_new_image(game->mlx, WIN_WIDTH, WIN_NEIGHT);
-	game->background.addr = \
-	mlx_get_data_addr(game->background.img_ptr, &game->background.bpp, \
-		&game->background.line_length, &game->background.endian);
+	game->img.img_ptr = mlx_new_image(game->mlx, WIN_WIDTH, WIN_NEIGHT);
+	game->img.addr = \
+	mlx_get_data_addr(game->img.img_ptr, &game->img.bpp, \
+		&game->img.line_length, &game->img.endian);
 	draw_background(game);
-	//raycast()
-	mlx_put_image_to_window(game->mlx, game->window, game->background.img_ptr, 0, 0);
-	mlx_destroy_image(game->mlx, game->background.img_ptr);
+	raycast(game);
+	mlx_put_image_to_window(game->mlx, game->window, game->img.img_ptr, 0, 0);
+	mlx_destroy_image(game->mlx, game->img.img_ptr);
 }
 
 // Нужно будет отсюда убрать это в другую функцию, это выход с кнопки
