@@ -41,6 +41,7 @@ void	draw_background(t_game *game)
 		*canvas++ = game->ceiling_color;
 		i--;
 	}
+	i = WIN_WIDTH * WIN_NEIGHT / 2;
 	while (i > 0)
 	{
 		*canvas++ = game->floor_color;
