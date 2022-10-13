@@ -5,7 +5,7 @@ HEADER = $(INCLUDES)/cub3d.h
 
 DIR_S		= sources/
 DIR_O		= objects/
-C_FILES		= main.c parse_file.c parse_utils.c get_next_line.c get_next_line_utils.c \
+C_FILES		= main.c parse_file.c parse_utils.c get_next_line.c \
 			textures.c colors.c map.c map_utils.c walls_check_hor.c walls_check_vert.c \
 			init_game.c exit.c raycast.c ray_utils.c draw_lines.c
 SRCS = $(addprefix $(DIR_S),$(C_FILES))
