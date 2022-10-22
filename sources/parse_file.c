@@ -6,7 +6,7 @@
 /*   By: jlenna <jlenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:11:08 by jlenna            #+#    #+#             */
-/*   Updated: 2022/10/06 17:11:36 by jlenna           ###   ########.fr       */
+/*   Updated: 2022/10/22 13:10:11 by jlenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	validate_file_name_ending(char *file_name, t_game *game)
 
 void	save_file_content(t_game *game, char *file)
 {
-	int 	fd;
+	int		fd;
 	int		i;
 	char	*line;
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_lines.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlenna <jlenna@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/22 13:08:38 by jlenna            #+#    #+#             */
+/*   Updated: 2022/10/22 13:09:05 by jlenna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	draw_vertical_line(t_game *game, int w, float dist)
@@ -18,7 +30,8 @@ void	draw_vertical_line(t_game *game, int w, float dist)
 	}
 	src = (unsigned int *) game->txt[game->txt_idx].addr;
 	src += (int)((float) game->txt_w * game->txt[game->txt_idx].width);
-	dst = (unsigned int *) game->img.addr + w + (WIN_NEIGHT - h) / 2 * WIN_WIDTH;
+	dst = (unsigned int *) game->img.addr + w + (WIN_NEIGHT - h) \
+	/ 2 * WIN_WIDTH;
 	while (h-- > 0)
 	{
 		*dst = *(src + ((int)src_f) * game->txt[game->txt_idx].width);

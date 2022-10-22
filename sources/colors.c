@@ -6,7 +6,7 @@
 /*   By: jlenna <jlenna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:10:04 by jlenna            #+#    #+#             */
-/*   Updated: 2022/10/06 17:10:05 by jlenna           ###   ########.fr       */
+/*   Updated: 2022/10/22 13:05:36 by jlenna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	rgb_atoi(const char *string, t_game *game)
 
 void	check_rgb_chars(char *string, t_game *game)
 {
-	int	i;
-	char c;
+	int		i;
+	char	c;
 
 	i = 0;
 	c = string[i];

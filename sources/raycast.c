@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlenna <jlenna@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/22 13:10:46 by jlenna            #+#    #+#             */
+/*   Updated: 2022/10/22 13:12:35 by jlenna           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	ray_init(t_game *game, t_ray *ray, float view)
@@ -19,8 +31,8 @@ static void	ray_calc(t_game *game, t_ray *r)
 	if (r->sx != 0)
 	{
 		r->vert_y = game->hero_y + r->dy / r->dx * (r->vert_x - game->hero_x);
-		r->vert_dist = (float)sqrt(pow(game->hero_x - r->vert_x, 2.0)
-							+ pow(game->hero_y - r->vert_y, 2.0));
+		r->vert_dist = (float)sqrt(pow(game->hero_x - r->vert_x, 2.0) \
+		+ pow(game->hero_y - r->vert_y, 2.0));
 		r->vert_w = r->vert_y - (int) r->vert_y;
 		if (r->sx > 0)
 			r->vert_w = 1 - r->vert_w;
@@ -30,8 +42,8 @@ static void	ray_calc(t_game *game, t_ray *r)
 	if (r->sy != 0)
 	{
 		r->hor_x = game->hero_x + r->dx / r->dy * (r->hor_y - game->hero_y);
-		r->hor_dist = (float)sqrt(pow(game->hero_x - r->hor_x, 2.0)
-						   + pow(game->hero_y - r->hor_y, 2.0));
+		r->hor_dist = (float)sqrt(pow(game->hero_x - r->hor_x, 2.0) \
+		+ pow(game->hero_y - r->hor_y, 2.0));
 		r->hor_w = r->hor_x - (int) r->hor_x;
 		if (r->sy < 0)
 			r->hor_w = 1 - r->hor_w;
@@ -57,14 +69,17 @@ float	get_ray(t_game *game, float view_current) //вычисление дист�
 		ray_calc(game, &ray);
 		if (ray.vert_dist < ray.hor_dist)
 		{
-			if (game->map[(int)ray.vert_y][(int)ray.vert_x + (ray.sx - 1) / 2] == '1')
-				return (update_txt(game, ray.vert_dist, ray.sx + 1, ray.vert_w));
+			if (game->map[(int)ray.vert_y][(int)ray.vert_x \
+			+ (ray.sx - 1) / 2] == '1')
+				return (update_txt(game, ray.vert_dist, \
+				ray.sx + 1, ray.vert_w));
 			else
 				ray.vert_x += (float)ray.sx;
 		}
 		else
 		{
-			if (game->map[(int)ray.hor_y + (ray.sy - 1) / 2][(int)ray.hor_x] == '1')
+			if (game->map[(int)ray.hor_y + (ray.sy - 1) / 2] \
+			[(int)ray.hor_x] == '1')
 				return (update_txt(game, ray.hor_dist, ray.sy + 2, ray.hor_w));
 			else
 				ray.hor_y += (float)ray.sy;
