@@ -78,7 +78,6 @@ void	check_number_of_players(t_game *game)
 
 void	validate_map(t_game *game)
 {
-	check_map_size(game);
 	check_map_chars(game);
 	check_number_of_players(game);
 	validate_walls_by_lines(game);
