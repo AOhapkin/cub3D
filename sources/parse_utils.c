@@ -75,9 +75,9 @@ void	count_file_lines(t_game *game, char *file)
 float	get_player_view(char player_start_char)
 {
 	if (player_start_char == NORTH)
-		return ((float)(0.5f * M_PI));
-	else if (player_start_char == SOUTH)
 		return ((float)(-0.5f * M_PI));
+	else if (player_start_char == SOUTH)
+		return ((float)(0.5f * M_PI));
 	else if (player_start_char == WEST)
 		return ((float)(1.0f * M_PI));
 	else
